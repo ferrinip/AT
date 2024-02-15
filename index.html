@@ -841,7 +841,7 @@ hideQr2.addEventListener("click", veiwQr, false);
 // configurar Service Worker
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/sw.js")
+    .register("https://ferrinip.github.io/AT/sw.js")
     .then(function (registration) {
       console.log("Registro de Service Worker Exitoso:", registration);
     })
