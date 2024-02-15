@@ -51,7 +51,7 @@
     }
   ],
   "scope": "/",
-  "start_url": "/index.html",
+  "start_url": "https://ferrinip.github.io/AT/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
