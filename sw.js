@@ -29,24 +29,15 @@ self.addEventListener('install', (e) => {
 
 // Activación: busca los recursos para hacer que funcione sin conexión.
 // Escuche el evento `activate`.
-self.addEventListener('activate', (e) => {
+self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(key => {
-            if (key !== cacheName) {
-              // eliminamos lo que ya no se necesita en cache
-              return caches.delete(key);
-            }
-          })
-        );
+    caches.open(cacheName)
+      .then(cache => {
+        return cache.addAll(cacheFiles)
+          .then(() => self.skipWaiting())
       })
-      .then(() => {
-        // activar el cache actual
-        self.clients.claim();
-      })
-  );
+      .catch(err => console.log('Falló registro de cache', err))
+  )
 });
 
 // Solicitar: URL real o los recursos estáticos del cache.
