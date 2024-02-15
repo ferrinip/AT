@@ -1,4 +1,4 @@
-﻿'use strict';
+de﻿'use strict';
 // version 0.5
 
 // El nombre del caché que usa tu aplicación.
@@ -51,14 +51,24 @@ self.addEventListener('activate', (e) => {
 
 // Solicitar: URL real o los recursos estáticos del cache.
 // Escuche el evento `fetch`.
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.open(cacheName).then((cache) => {
-      return cache.match(e.request)
-      .then((response) => {
-        return response || fetch(e.request);
-      });
-    })
-  );
-});
+self.addEventListener("fetch", event => {
+  async function returnCachedResource() {
+    // Open the app's cache.
+    const cache = await caches.open(cacheName);
+    // Find the response that was pre-cached during the `install` event.
+    const cachedResponse = await cache.match(event.request.url);
 
+    if (cachedResponse) {
+      // Return the resource.
+      return cachedResponse;
+    } else {
+      // The resource wasn't found in the cache, so fetch it from the network.
+      const fetchResponse = await fetch(event.request.url);
+      // Put the response in cache.
+      cache.put(event.request.url, fetchResponse.clone());
+      // And return the response.
+      return fetchResponse.
+    }
+  }
+ event.respondWith(returnCachedResource());
+});
