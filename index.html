@@ -839,18 +839,7 @@ hideQr2.addEventListener("click", veiwQr, false);
 <!-- Registro de Service Worker -->
 <script>
 // configurar Service Worker
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("sw.js")
-    .then(function (registration) {
-      console.log("El registro del Service Worker fue exitoso:", registration);
-    })
-    .catch(function (error) {
-      console.log("Error en el registro del Service Worker:", error);
-    });
-} else {
-  console.log("Service workers no soportado.");
-}
+navigator.serviceWorker.register('/sw.js')
 </script>
 <!-- Registro de Service Worker -->
 
