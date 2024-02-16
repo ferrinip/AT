@@ -6,14 +6,14 @@ const cacheName = 'ATraductor-v0.6';
 
 // Lista de archivos estáticos que la aplicación necesita para iniciarse.
 const cacheFiles = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/db/db.js',
-  '/img/icons/icon-72x72.png',
-  '/img/icons/icon-96x96.png',
-  '/img/icons/icon-128x128.png',
-  '/img/icons/icon-512x512.png'
+  'https://ferrinip.github.io/AT/',
+  'https://ferrinip.github.io/AT/index.html',
+  'https://ferrinip.github.io/AT/manifest.json',
+  'https://ferrinip.github.io/AT/db/db.js',
+  'https://ferrinip.github.io/AT/img/icons/icon-72x72.png',
+  'https://ferrinip.github.io/AT/img/icons/icon-96x96.png',
+  'https://ferrinip.github.io/AT/img/icons/icon-128x128.png',
+  'https://ferrinip.github.io/AT/img/icons/icon-512x512.png'
 ];
 
 // Instalación: se almacena en caché los archivos estáticos.
